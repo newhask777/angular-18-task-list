@@ -2,11 +2,11 @@
 
 <main>
     <ul id="users">
-        <li>
-            <app-user [avatar]="users[0].avatar" [name]="users[0].name"/>
-        </li>
-         <li>
-            <app-user [avatar]="users[1].avatar" [name]="users[0].name"/>
-        </li>
+        @for (user of users; track user.id) {
+            <li>
+                <app-user [user]="user" (select)="onSelectUser($event)" />
+            </li>
+        }
     </ul>
+    <app-tasks [name]="selectedUser?.name" />
 </main>
